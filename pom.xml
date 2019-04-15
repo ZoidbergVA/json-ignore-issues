@@ -141,7 +141,7 @@
 			<activeByDefault>true</activeByDefault>
 		</activation>
 		<build>
-			<finalName>dhc-${BUILD_NUMBER}-SNAPSHOT</finalName>
+			<finalName>dhc-${project.version}-SNAPSHOT</finalName>
 			<plugins>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -154,7 +154,7 @@
                                 <goal>jar</goal>
                             </goals>
                             <configuration>
-                                <classifier>${BUILD_NUMBER}</classifier>
+                                <classifier>${project.version}</classifier>
                             </configuration>
                         </execution>
                     </executions>
@@ -170,15 +170,12 @@
                                 <goal>install-file</goal>
                             </goals>
                             <configuration>
-                                <file>${project.build.directory}/${project.build.finalName}-${BUILD_NUMBER}.${project.packaging}</file>
+                                <file>${project.build.directory}/${project.build.finalName}.${project.packaging}</file>
                             </configuration>
                         </execution>
                     </executions>
                 </plugin>
             </plugins>
-			<filters>
-				<filter>../profiles/${profile.id}/config.properties</filter>
-			</filters>
 			<resources> 
 				<resource>
 					<filtering>true</filtering>
