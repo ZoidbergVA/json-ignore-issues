@@ -1,6 +1,8 @@
 package com.gekko.dhc.controller;
 
 import com.gekko.dhc.dto.UserDTO;
+import com.gekko.dhc.SmallFilter;
+import com.jfilter.filter.DynamicFilter;
 import com.jfilter.filter.FieldFilterSetting;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -32,7 +34,7 @@ public class UserController {
         return response;
     }
 
-    @FieldFilterSetting(fields = {"firstName"})
+    @DynamicFilter(SmallFilter.class)
     @ApiOperation(notes = "", code = 200, value = "")
     @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Map<String, Object>> findAll(
